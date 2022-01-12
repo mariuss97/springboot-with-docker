@@ -12,10 +12,10 @@ spec:
       labels:
         app: jhooq-springboot
     spec:
-      imagePullPolicy: Always
       containers:
         - name: springboot
           image: mariuss97/jhooq-docker-demo:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
           env:
