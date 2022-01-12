@@ -43,5 +43,12 @@ node {
         stage('Deploy spring boot') {
           sshCommand remote: remote, command: "kubectl apply -f k8s-spring-boot-deployment.yml"
         }
+        
+        # Hack to pull new image during creation of new Pods
+        stage('Start new Rollout') {
+          sshCommand remote: remote, command: "kubectl rollout restart deployment.apps/jhooq-springboot"
+        }
+        
+        
     } 
 }
